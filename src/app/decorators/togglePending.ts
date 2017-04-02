@@ -7,8 +7,14 @@ export default ({ key } = {key: 'pending'}) => function togglePending(t, k, d) {
     }
     this[key] = true;
     return promise
-      .then(() => this[key] = false)
-      .catch(() => this[key] = false);
+      .then(result => {
+        this[key] = false;
+        return result;
+      })
+      .catch(err => {
+        this[key] = false;
+        throw err;
+      });
   };
 
   return d;

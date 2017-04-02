@@ -9,8 +9,14 @@ export default ({ successMsg, failMsg }) => function asyncNoti(t, k, d) {
       throw 'Promise should be returned for noti decorator';
     }
     return promise
-      .then(() => toatrs.success(successMsg))
-      .catch(() => toatrs.error(failMsg));
+      .then(result => {
+        toatrs.success(successMsg);
+        return result;
+      })
+      .catch(error => {
+        toatrs.error(failMsg);
+        throw error;
+      });
   };
 
   return d;
