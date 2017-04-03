@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --progress -w --content-base src",
+    "start": "webpack-dev-server --progress -w --content-base src --port 8080 --host 0.0.0.0 --historyApiFallback",
     "build": "webpack",
     "build:watch": "webpack -w"
   },
