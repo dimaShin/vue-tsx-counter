@@ -4,7 +4,8 @@ import Component from "vue-class-component";
 import '../theme/index.scss';
 import AuthRoute from "./routes/auth.route";
 import DashboardRoute from "./routes/dashboard.route";
-
+import router from './routes';
+console.log(router);
 @Component
 class App extends Vue {
 
@@ -24,13 +25,14 @@ class App extends Vue {
   }
 
   render(h) {
-    return <div class="app-container"> { this.getCurrentRoute(h) } </div>;
+    return <router-view />;
   }
 }
 
 new Vue({
   el: '#app',
   store,
+  router,
   render (h) {
     return (
       <App />
